@@ -1,4 +1,6 @@
 streamlit
 haystack-ai
+sentence-transformers
+requests
 google-ai-haystack
 trafilatura
