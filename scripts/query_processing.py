@@ -117,7 +117,7 @@ def process_query(pipeline, query):
     try:
         result = pipeline.run({
             "embedder": {"text": query},
-            "prompt_builder": {"query": query},  # Sadece query'yi gönderiyoruz
+            "prompt_builder": {"query": query},
             "router": {"query": query}
         })
 
