@@ -21,7 +21,7 @@ EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2"
 GENERATOR_MODEL = "gemini-2.0-flash"
 
 # Pipeline ayarları
-SPLIT_LENGTH = 25
-SPLIT_OVERLAP = 2
+SPLIT_LENGTH = 100
+SPLIT_OVERLAP = 10
 TOP_K = 3
 

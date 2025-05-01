@@ -2,6 +2,8 @@
 Query processing module for AI Documentation Assistant.
 Handles user queries and generates responses using Haystack and Gemini.
 """
+import os
+
 import streamlit as st
 
 from haystack import Pipeline
@@ -16,8 +18,11 @@ from scripts.config import EMBEDDING_MODEL, GENERATOR_MODEL, TOP_K
 from scripts.utils import log_message
 from haystack.components.routers import ConditionalRouter
 
-GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
-SERPERDEV_API_KEY = st.secrets["SERPERDEV_API_KEY"]
+#GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
+#SERPERDEV_API_KEY = st.secrets["SERPERDEV_API_KEY"]
+
+os.environ["GOOGLE_API_KEY"] = "AIzaSyBO4qRib0U_jfNT68LMbPn_P1d1tPmD4do"
+os.environ["SERPERDEV_API_KEY"] = "5c25fca87d36394c324f67dd4feec9f28482873b"
 
 def build_query_pipeline(document_store):
     """
