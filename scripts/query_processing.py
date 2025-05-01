@@ -18,11 +18,8 @@ from scripts.config import EMBEDDING_MODEL, GENERATOR_MODEL, TOP_K
 from scripts.utils import log_message
 from haystack.components.routers import ConditionalRouter
 
-#GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
-#SERPERDEV_API_KEY = st.secrets["SERPERDEV_API_KEY"]
-
-os.environ["GOOGLE_API_KEY"] = "AIzaSyBO4qRib0U_jfNT68LMbPn_P1d1tPmD4do"
-os.environ["SERPERDEV_API_KEY"] = "5c25fca87d36394c324f67dd4feec9f28482873b"
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
+SERPERDEV_API_KEY = st.secrets["SERPERDEV_API_KEY"]
 
 def build_query_pipeline(document_store):
     """
