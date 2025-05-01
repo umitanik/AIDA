@@ -16,7 +16,7 @@ DOC_URLS = [
 ]
 
 # API anahtarları
-GEMINI_API_KEY = "AIzaSyApNzWUhm8ewQG23FuIYnLq4TxWxayqU1c"
+GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
 
 # Model ayarları
 #EMBEDDING_MODEL = "sentence-transformers/msmarco-distilbert-base-v4"

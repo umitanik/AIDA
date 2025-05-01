@@ -3,21 +3,23 @@ Query processing module for AI Documentation Assistant.
 Handles user queries and generates responses using Haystack and Gemini.
 """
 
+import os
+
 from haystack import Pipeline
-from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
-from haystack.components.embedders import SentenceTransformersTextEmbedder
 from haystack.components.builders import ChatPromptBuilder
+from haystack.components.embedders import SentenceTransformersTextEmbedder
+from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
+from haystack.components.routers import ConditionalRouter
 from haystack.components.websearch import SerperDevWebSearch
-from haystack_integrations.components.generators.google_ai.chat.gemini import GoogleAIGeminiChatGenerator
 from haystack.dataclasses import ChatMessage
+from haystack_integrations.components.generators.google_ai.chat.gemini import GoogleAIGeminiChatGenerator
 
 from scripts.config import EMBEDDING_MODEL, GENERATOR_MODEL, TOP_K
 from scripts.utils import log_message
-from haystack.components.routers import ConditionalRouter
 
-import os
-os.environ["GOOGLE_API_KEY"] = "AIzaSyApNzWUhm8ewQG23FuIYnLq4TxWxayqU1c"
-os.environ["SERPERDEV_API_KEY"] = "5c25fca87d36394c324f67dd4feec9f28482873b"
+os.environ["GOOGLE_API_KEY"] = "YOUR_GOOGLE_API_KEY"
+os.environ["SERPERDEV_API_KEY"] = "YOUR_SERPERDEV_API_KEY"
+
 
 def build_query_pipeline(document_store):
     """
@@ -126,11 +128,10 @@ Below are documents retrieved from the internal documentation.
     advanced_rag = Pipeline(max_runs_per_component=5)
     advanced_rag.add_component("embedder", SentenceTransformersTextEmbedder(model=EMBEDDING_MODEL))
     advanced_rag.add_component("retriever", InMemoryEmbeddingRetriever(document_store=document_store, top_k=TOP_K))
-    advanced_rag.add_component("prompt_builder", ChatPromptBuilder(template=prompt,  required_variables=["query"]))
+    advanced_rag.add_component("prompt_builder", ChatPromptBuilder(template=prompt, required_variables=["query"]))
     advanced_rag.add_component("llm", GoogleAIGeminiChatGenerator(model=GENERATOR_MODEL))
     advanced_rag.add_component("web_search", SerperDevWebSearch())
     advanced_rag.add_component("router", ConditionalRouter(routes=main_routes))
-
 
     log_message("connecting components...")
     advanced_rag.connect("embedder", "retriever")
@@ -140,7 +141,6 @@ Below are documents retrieved from the internal documentation.
     advanced_rag.connect("router.go_web", "web_search.query")
     advanced_rag.connect("web_search.documents", "prompt_builder.web_documents")
 
-
     return advanced_rag
 
 
@@ -149,7 +149,7 @@ def process_query(pipeline, query):
     try:
         result = pipeline.run({
             "embedder": {"text": query},
-            "prompt_builder": {"query": query},  # Sadece query'yi gönderiyoruz
+            "prompt_builder": {"query": query},
             "router": {"query": query}
         })
 
