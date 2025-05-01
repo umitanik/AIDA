@@ -17,9 +17,8 @@ def main():
     if "query_pipeline" not in st.session_state:
         st.session_state.query_pipeline = None
 
-    # Belgeleri indeksleme butonu
-    if st.button("📚 Belgeleri İndeksle") and not st.session_state.indexed:
-        with st.spinner("Belgeler indiriliyor ve işleniyor..."):
+    if not st.session_state.indexed:
+        with st.spinner("Belgeler otomatik olarak indiriliyor ve işleniyor..."):
             log_message("Indexleme başlatılıyor...")
             document_store = create_document_store()
             indexing_pipeline = build_indexing_pipeline(document_store)
