@@ -1,6 +1,7 @@
 streamlit
-haystack-ai
+haystack-ai==1.22.1
 sentence-transformers
 requests
 trafilatura
 google-api-python-client
+google-generativeai
