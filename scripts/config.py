@@ -16,8 +16,8 @@ DOC_URLS = [
 ]
 
 # Model ayarları
-#EMBEDDING_MODEL = "sentence-transformers/msmarco-distilbert-base-v4"
-EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2"
+EMBEDDING_MODEL = "sentence-transformers/msmarco-distilbert-base-v4"
+#EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2"
 GENERATOR_MODEL = "gemini-2.0-flash"
 
 # Pipeline ayarları
