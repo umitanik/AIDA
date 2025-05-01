@@ -1,1 +1,6 @@
-# pip install haystack-ai
+streamlit
+haystack-ai
+sentence-transformers
+requests
+trafilatura
+google-api-python-client
