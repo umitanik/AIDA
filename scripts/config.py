@@ -15,9 +15,6 @@ DOC_URLS = [
     "https://haystack.deepset.ai/tutorials/40_building_chat_application_with_function_calling",
 ]
 
-# API anahtarları
-GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
-
 # Model ayarları
 #EMBEDDING_MODEL = "sentence-transformers/msmarco-distilbert-base-v4"
 EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2"
