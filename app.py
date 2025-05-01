@@ -7,7 +7,7 @@ def main():
     st.set_page_config(page_title="AI Documentation Assistant", page_icon="🧠")
 
     st.title("🧠 AI Documentation Assistant")
-    st.write("Pandas, NumPy, Scikit-learn veya Haystack hakkında teknik sorularınızı sorabilirsiniz!")
+    st.write("Yapay zeka hakkında teknik sorularınızı sorabilirsiniz!")
 
     # Durum kontrolü
     if "indexed" not in st.session_state:
