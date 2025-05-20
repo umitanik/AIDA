@@ -1,4 +1,3 @@
-#Gerekli Kütüphaneler
 from haystack import Pipeline
 from haystack.document_stores.in_memory import InMemoryDocumentStore
 from haystack.components.fetchers import LinkContentFetcher
