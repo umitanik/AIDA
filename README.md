@@ -1,10 +1,9 @@
+# **AI Documentation Assistant**  |  **Yapay Zeka Dökümantasyon Asistanı**
 <!-- Dil seçimi için butonlar (etiket gibi) -->
 <p align="center">
   <a href="#en">🇬🇧 EN</a> |
   <a href="#tr">🇹🇷 TR</a>
 </p>
-
----
 
 # <a name="en"></a>🧠 AI Documentation Assistant (English)
 
