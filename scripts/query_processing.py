@@ -11,8 +11,14 @@ from haystack_integrations.components.generators.google_ai.chat.gemini import Go
 from scripts.config import EMBEDDING_MODEL, GENERATOR_MODEL, TOP_K
 from scripts.utils import log_message
 
-GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
-SERPERDEV_API_KEY = st.secrets["SERPERDEV_API_KEY"]
+# Safely get API keys from secrets
+try:
+    GOOGLE_API_KEY = st.secrets["AIzaSyBO4qRib0U_jfNT68LMbPn_P1d1tPmD4do"]
+    SERPERDEV_API_KEY = st.secrets["5c25fca87d36394c324f67dd4feec9f28482873b"]
+except Exception as e:
+    log_message(f"API anahtarları yüklenirken hata oluştu: {str(e)}", level="error")
+    GOOGLE_API_KEY = None
+    SERPERDEV_API_KEY = None
 
 
 def build_query_pipeline(document_store):
@@ -23,19 +29,24 @@ def build_query_pipeline(document_store):
         document_store (InMemoryDocumentStore): The document store to retrieve from.
 
     Returns:
-        Pipeline: The configured query pipeline.
+        Pipeline: The configured query pipeline or None if API keys are missing.
     """
     log_message("Building query pipeline...")
+
+    # Check if API keys are available
+    if GOOGLE_API_KEY is None or SERPERDEV_API_KEY is None:
+        log_message("API anahtarları eksik. Query pipeline oluşturulamıyor.", level="error")
+        return None
 
     prompt_template = """
     {% if web_documents %}
         You are an expert AI assistant focused on technical questions about Python libraries such as Pandas, NumPy, TensorFlow, PyTorch, LangChain, and Haystack.
-        
+
         A user has asked the following question:
         **"{{ query }}"**
-        
+
         You are given web-retrieved documents that may help. Your goal is:
-        
+
         - If the user asks a code-related question, provide:
           - A **short but functional Python code snippet**
           - A **step-by-step explanation** of how it works
@@ -43,28 +54,28 @@ def build_query_pipeline(document_store):
         - Use only the content in the documents.
         - If useful, include source links from the documents.
         - If there is not enough context, respond with `NO_ANSWER`.
-        
+
         **Web Context:**
         {% for document in web_documents %}
         ---
         **URL:** {{ document.meta.link }}
         {{ document.content }}
         {% endfor %}
-        
+
         {% else %}
         You are an AI assistant for answering detailed technical questions about libraries like Pandas, NumPy, TensorFlow, PyTorch, LangChain, and Haystack.
-        
+
         Here is the user's question:
         **"{{ query }}"**
-        
+
         Below are documents retrieved from the internal documentation.
-        
+
         **Documents:**
         {% for document in documents %}
         ---
         {{ document.content }}
         {% endfor %}
-        
+
         **Instructions:**
         - If the question includes code or syntax, return:
           - A working Python example

@@ -44,10 +44,23 @@ def build_indexing_pipeline(document_store):
 def index_documents(pipeline):
     """
     Index documents from the specified URLs.
+
+    Returns:
+        bool: True if indexing was successful, False otherwise.
     """
     log_message("Indexing documents...")
     try:
-        pipeline.run({"fetcher": {"urls": DOC_URLS}})
-        log_message(f"Successfully indexed {len(DOC_URLS)} documentation pages.")
+        # Her URL için ayrı ayrı işlem yap
+        total_urls = len(DOC_URLS)
+        for i, url in enumerate(DOC_URLS):
+            log_message(f"Indexing {i+1}/{total_urls}: {url}")
+            pipeline.run({"fetcher": {"urls": [url]}})
+            # İlerleme yüzdesi
+            progress_percent = (i + 1) / total_urls * 100
+            log_message(f"Progress: {progress_percent:.1f}%")
+
+        log_message(f"Successfully indexed {total_urls} documentation pages.")
+        return True
     except Exception as e:
         log_message(f"Error during indexing: {str(e)}")
+        return False
