@@ -13,8 +13,8 @@ from scripts.utils import log_message
 
 # Safely get API keys from secrets
 try:
-    GOOGLE_API_KEY = st.secrets["AIzaSyBO4qRib0U_jfNT68LMbPn_P1d1tPmD4do"]
-    SERPERDEV_API_KEY = st.secrets["5c25fca87d36394c324f67dd4feec9f28482873b"]
+    GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
+    SERPERDEV_API_KEY = st.secrets["SERPERDEV_API_KEY"]
 except Exception as e:
     log_message(f"API anahtarları yüklenirken hata oluştu: {str(e)}", level="error")
     GOOGLE_API_KEY = None
