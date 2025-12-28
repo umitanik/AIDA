@@ -5,13 +5,13 @@
   <a href="#tr">🇹🇷 TR</a>
 </p>
 
-# <a name="en"></a>🧠 AI Documentation Assistant (English)
+# <a name="en"></a> AI Documentation Assistant (English)
 
 **AI Documentation Assistant** is a Streamlit-based application that lets you ask advanced technical questions about
 Python libraries (such as Pandas, Numpy, TensorFlow, PyTorch, LangChain, Haystack, and more). Powered by advanced RAG (
 Retrieval-Augmented Generation), it retrieves trustworthy answers from official documentation and web sources.
 
-## 🚀 Features
+##  Features
 
 - **Automated Documentation Indexing:** Fetches, cleans, splits, and embeds documentation pages for fast QA.
 - **Hybrid RAG Pipeline:** Answers with code examples and explanations based on context, using both internal docs and
@@ -20,7 +20,7 @@ Retrieval-Augmented Generation), it retrieves trustworthy answers from official 
 - **Code & Explanation Focus:** Responds with concise code samples and step-by-step explanations.
 - **Modern UI:** Simple and intuitive interface built on Streamlit.
 
-## 🛠️ Quickstart
+##  Quickstart
 
 1. **Install dependencies:**
    ```bash
@@ -39,12 +39,12 @@ Retrieval-Augmented Generation), it retrieves trustworthy answers from official 
    ```
 4. The application will automatically download and index documentation on first run. Then, you can ask your questions!
 
-## ⚙️ Configuration
+##  Configuration
 
 - Documentation sources and model configs can be changed in `scripts/config.py`.
 - Add new sources to `DOC_URLS` as needed.
 
-## 🤖 Technologies Used
+##  Technologies Used
 
 - [Streamlit](https://streamlit.io/)
 - [Haystack](https://docs.haystack.deepset.ai/)
@@ -55,14 +55,14 @@ Retrieval-Augmented Generation), it retrieves trustworthy answers from official 
 
 ---
 
-# <a name="tr"></a>🧠 Yapay Zeka Dökümantasyon Asistanı (Türkçe)
+# <a name="tr"></a> Yapay Zeka Dökümantasyon Asistanı (Türkçe)
 
 **Yapay Zeka Dökümantasyon Asistanı**, Python kütüphaneleri (Pandas, Numpy, TensorFlow, PyTorch, LangChain, Haystack ve
 diğerleri) hakkında teknik sorularınıza yanıtlar veren Streamlit tabanlı bir uygulamadır. Gelişmiş RAG (
 Retrieval-Augmented Generation) altyapısı ile hem iç hem de web tabanlı dökümantasyonları tarayarak doğru ve güvenilir
 cevaplar sunar.
 
-## 🚀 Özellikler
+##  Özellikler
 
 - **Otomatik Dökümantasyon İndeksleme:** Dökümantasyon sayfalarını indirir, temizler, böler ve embed eder.
 - **Hibrit RAG Pipeline:** Öncelikle iç dökümantasyonlarla, yetersiz kalırsa web arama ile sonuç üretir.
@@ -70,7 +70,7 @@ cevaplar sunar.
 - **Kod ve Açıklama Odaklı:** Kod örnekleri ve adım adım açıklamalarla yanıt verir.
 - **Modern UI:** Kullanıcı dostu ve sade Streamlit arayüzü.
 
-## 🛠️ Hızlı Başlangıç
+##  Hızlı Başlangıç
 
 1. **Bağımlılıkları yükleyin:**
    ```bash
@@ -89,12 +89,12 @@ cevaplar sunar.
    ```
 4. Uygulama ilk başlatıldığında dökümantasyonları indirir ve indeksler. Sonrasında sorularınızı sorabilirsiniz!
 
-## ⚙️ Yapılandırma
+##  Yapılandırma
 
 - Dökümantasyon kaynaklarını ve model ayarlarını `scripts/config.py` dosyasından güncelleyebilirsiniz.
 - `DOC_URLS` sabitine yeni kaynaklar ekleyebilirsiniz.
 
-## 🤖 Kullanılan Teknolojiler
+##  Kullanılan Teknolojiler
 
 - [Streamlit](https://streamlit.io/)
 - [Haystack](https://docs.haystack.deepset.ai/)
